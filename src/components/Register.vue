@@ -4,7 +4,7 @@
       <div class="col-md-6 mt-5 mx-auto">
         <form @submit.prevent="handleSubmit">
           <div class="alert alert-danger" role="alert" id="failRegis" style="display:none">
-          Email ถูกใช้แล้วกรุณาใช้ Email ใหม่
+          Email ถูกใช้แล้วกรุณาใช้ Email อื่น
         </div>
           <h1 class="h3 mb-3 font-weight-normal">Register</h1>
           <div class="form-group">
