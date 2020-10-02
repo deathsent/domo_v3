@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <form @submit.prevent="handleSubmit">
+          <div class="alert alert-danger" role="alert" id="failRegis" style="display:none">
+          Email ถูกใช้แล้วกรุณาใช้ Email ใหม่
+        </div>
           <h1 class="h3 mb-3 font-weight-normal">Register</h1>
           <div class="form-group">
             <label for="first_name">First Name</label>
@@ -147,13 +150,28 @@ export default {
         password: this.user.password,
         role: this.role,
       };
-      axios.post("http://localhost:5000/api/users/register", newUser);
-      // console.log('7777',newUser);
-      // .then((res) => {
+      axios.post("http://localhost:5000/api/users/register", newUser)
+      // console.log('7777',newUser)
+      .then(res => {
+        console.log('555',res.data)
+        if (res.data.err){
+          document.getElementById("failRegis").style.display = "block"
+          return
+          
+        }else{
+          router.push({ name: 'Login' })
+        }
+        
+        // router.push({ name: 'Login' })
+      })
+      
       //   console.log(res);
       //   router.push({ name: "Login" });
       // })
       // .catch((err) => {
+      //   document.getElementById("failLogin").style.display = "block";
+      //     console.log("999", err);
+      //   });
       //   console.log(err);
 
     },
@@ -164,8 +182,8 @@ export default {
       if (this.$v.$invalid) {
         return;
       }else {
-           router.push({ name: "Login" });
            this.register()
+          //  router.push({ name: "Login" });
       }
     },
   },

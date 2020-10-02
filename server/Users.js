@@ -62,7 +62,7 @@ users.post("/register", (req, res) =>{
             })
         }else{
             console.log(res);
-            res.json({error: 'User already exists'})
+            res.json({err: 'User already exists'})
         }
     })
     .catch(err =>{

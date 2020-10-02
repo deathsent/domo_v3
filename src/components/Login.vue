@@ -3,6 +3,9 @@
     <div class="row">
       <div class="col-md-6 mt-5 mx-auto">
         <form v-on:submit.prevent="handleSubmit">
+          <div class="alert alert-danger" role="alert" id="failLogin" style="display:none">
+          ไม่พบชื่อผู้ใช้งาน กรุณาตรวจสอบ Email Password อีกครั้ง
+        </div>
           <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
           <div class="form-group">
             <label for="email">Email Address</label>
@@ -12,12 +15,9 @@
               class="form-control"
               name="email"
               placeholder="Enter Email"
-             :class="{ 'is-invalid': submitted && $v.email.$error }"
+              :class="{ 'is-invalid': submitted && $v.email.$error }"
             />
-            <div
-              v-if="submitted && $v.email.$error"
-              class="invalid-feedback"
-            >
+            <div v-if="submitted && $v.email.$error" class="invalid-feedback">
               <span v-if="!$v.email.required">Email is required</span>
               <span v-if="!$v.email.email">Email is invalid</span>
             </div>
@@ -30,7 +30,7 @@
               class="form-control"
               name="password"
               placeholder="Enter Password"
-            :class="{
+              :class="{
                 'is-invalid': submitted && $v.password.$error,
               }"
             />
@@ -39,21 +39,23 @@
               class="invalid-feedback"
             >
               <span v-if="!$v.required">Password is required</span>
-              <span v-if="!$v.minLength"
-                >, Please enter the password</span
-              >
+              <span v-if="!$v.minLength">, Please enter the password</span>
             </div>
           </div>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" @click="login()">
+          <button
+            class="btn btn-lg btn-primary btn-block"
+            type="submit"
+            @click="login()"
+          >
             Sign in
           </button>
-          <br>
+          <br />
           <h5>Admin User for test</h5>
-          <a>Email:test@mail.com</a><br>
+          <a>Email:test@mail.com</a><br />
           <a>Password:asdasd</a>
-          <br><br>
+          <br /><br />
           <h5>Member User for test</h5>
-          <a>Email:member@mail.com</a><br>
+          <a>Email:member@mail.com</a><br />
           <a>Password:asdasd</a>
         </form>
       </div>
@@ -76,11 +78,12 @@ export default {
       password: "",
       isLogin: "",
       submitted: false,
+      alert: false,
     };
   },
-   validations: {
-      email: { required, email },
-      password: { required, minLength: minLength(6) },
+  validations: {
+    email: { required, email },
+    password: { required, minLength: minLength(6) },
   },
   methods: {
     login() {
@@ -90,26 +93,26 @@ export default {
           password: this.password,
         })
         .then((res) => {
-          localStorage.setItem("usertoken", JSON.stringify(jwtDecode(res.data)));
+          localStorage.setItem(
+            "usertoken",
+            JSON.stringify(jwtDecode(res.data))
+          );
           // console.log('111', jwtDecode(res.data));
-          this.isLogin = jwtDecode(res.data).role
-          console.log('ssss',this.isLogin);
+          this.isLogin = jwtDecode(res.data).role;
+          console.log("ssss", localStorage);
           // ใช้อันนี้นะ
           // let user_Role = JSON.parse(localStorage.getItem("usertoken"))
           // console.log("axios/login2>>>", x.role);
 
-
           this.email = "";
           this.password = "";
-          res.data.message ? "" : router.push({ name: "Profile" })
+          res.data.message ? "" : router.push({ name: "Profile" });
           this.emitMethod();
-          
-
         })
         .catch((err) => {
-          console.log(err);
+          document.getElementById("failLogin").style.display = "block";
+          console.log("999", err);
         });
-      
     },
     emitMethod() {
       EventBus.$emit("logged-in", this.isLogin);
