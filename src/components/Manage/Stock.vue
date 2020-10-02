@@ -3,11 +3,10 @@
 
     <br />
     <router-view></router-view>
-    <br />
     <button
       type="submit"
       class="btn btn-primary"
-      style="margin-right:0px"
+      style="margin-right:0px; float:right"
       data-toggle="modal"
       data-target="#addProduct"
     >
@@ -17,6 +16,7 @@
       class="btn-group btn-group-lg"
       role="group"
       aria-label="Basic example"
+      
     >
       <router-link to="stock" type="button" class="btn btn-secondary"
         >Stock</router-link

@@ -85,7 +85,7 @@ export default {
           localStorage.setItem("usertoken", JSON.stringify(jwtDecode(res.data)));
           // console.log('111', jwtDecode(res.data));
           this.isLogin = jwtDecode(res.data).role
-          // console.log('ssss',this.isLogin);
+          console.log('ssss',this.isLogin);
           // ใช้อันนี้นะ
           // let user_Role = JSON.parse(localStorage.getItem("usertoken"))
           // console.log("axios/login2>>>", x.role);

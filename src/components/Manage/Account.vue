@@ -4,7 +4,7 @@
     <button
       type="submit"
       class="btn btn-primary"
-      style="margin-right:0px"
+      style="margin-right:0px; float:right"
       data-toggle="modal"
       data-target="#addAccount"
     >

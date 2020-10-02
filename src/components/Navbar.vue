@@ -48,7 +48,6 @@ export default {
   async created(){
     let userData = await JSON.parse(localStorage.getItem("usertoken"))
     this.role = userData.role
-    console.log('ssss',this.role)
     
   },
   methods: {
@@ -59,8 +58,8 @@ export default {
   mounted () {
     EventBus.$on('logged-in', status => {
       this.role = status
-      console.log('55',this.role);
-      console.log('asss',status);
+      // console.log('55',this.role);
+      // console.log('asss',status);
     })
   },
   
