@@ -47,6 +47,14 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit" @click="login()">
             Sign in
           </button>
+          <br>
+          <h5>Admin User for test</h5>
+          <a>Email:test@mail.com</a><br>
+          <a>Password:asdasd</a>
+          <br><br>
+          <h5>Member User for test</h5>
+          <a>Email:member@mail.com</a><br>
+          <a>Password:asdasd</a>
         </form>
       </div>
     </div>

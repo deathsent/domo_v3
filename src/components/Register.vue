@@ -148,7 +148,7 @@ export default {
         role: this.role,
       };
       axios.post("http://localhost:5000/api/users/register", newUser);
-      console.log('7777',newUser);
+      // console.log('7777',newUser);
       // .then((res) => {
       //   console.log(res);
       //   router.push({ name: "Login" });
@@ -166,7 +166,6 @@ export default {
       }else {
            router.push({ name: "Login" });
            this.register()
-           console.log(this.register());
       }
     },
   },
