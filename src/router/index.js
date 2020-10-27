@@ -10,6 +10,12 @@ import Product from "../components/Product.vue"
 
 Vue.use(VueRouter);
 
+// const Userinfo = JSON.parse(localStorage.getItem("usertoken"))
+// console.log('55555666555',Userinfo);
+// let userRole = Userinfo.role
+// console.log('7775544', userRole);
+// if (userRole ==='')
+
 const routes = [
   {
     path: "/",

@@ -10,7 +10,6 @@ import VueBus from 'vue-bus';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-
 Vue.use(VueAxios, axios);
 Vue.use(Vuelidate);
 // Vue.use(Vuex);

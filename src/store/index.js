@@ -54,6 +54,7 @@ export default new Vuex.Store({
       state.users[payload.index].first_name = payload.first_name;
       state.users[payload.index].last_name = payload.last_name;
       state.users[payload.index].email = payload.email;
+      state.users[payload.index].password = payload.password;
       state.users[payload.index].role = payload.role;
     },
   },

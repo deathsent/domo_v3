@@ -33,9 +33,9 @@
 <script>
 import router from '../router'
 import EventBus from './EvenBus'
-EventBus.$on('logged-in', test => {
-  console.log(test)
-})
+// EventBus.$on('logged-in', test => {
+//   console.log(test)
+// })
 export default {
   data () {
     // let userData = JSON.parse(localStorage.getItem("usertoken").role)

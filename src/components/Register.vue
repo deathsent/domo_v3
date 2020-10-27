@@ -153,7 +153,6 @@ export default {
       axios.post("http://localhost:5000/api/users/register", newUser)
       // console.log('7777',newUser)
       .then(res => {
-        console.log('555',res.data)
         if (res.data.err){
           document.getElementById("failRegis").style.display = "block"
           return
@@ -162,7 +161,6 @@ export default {
           router.push({ name: 'Login' })
         }
         
-        // router.push({ name: 'Login' })
       })
       
       //   console.log(res);
