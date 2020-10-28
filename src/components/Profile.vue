@@ -63,12 +63,29 @@
                 </div>
               </td>
               <td>
-                <input
-                  type="password"
-                  v-model="newPassword"
-                  placeholder="New Password"
-                />
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <div class="form-group">
+                  <input
+                    type="password"
+                    v-model="newPassword"
+                    placeholder="New Password"
+                    class="form-control"
+                    :class="{
+                      'is-invalid': submitted && $v.newPassword.$error,
+                    }"
+                  />
+                  <div
+                    v-if="submitted && $v.newPassword.$error"
+                    class="invalid-feedback"
+                  >
+                    <span v-if="!$v.newPassword.required">
+                      New password is required
+                    </span>
+                    <span v-else-if="!$v.newPassword.minLength">
+                      New password must be at least 6 characters
+                    </span>
+                  </div>
+                </div>
+                <button class="btn btn-outline-primary" type="submit">
                   Submit
                 </button>
               </td>
@@ -94,13 +111,13 @@ export default {
       role: profile.role,
       oldPassword: "",
       newPassword: "",
-      submitted : false,
+      submitted: false,
       alert: false,
     };
-
   },
   validations: {
     oldPassword: { required, minLength: minLength(6) },
+    newPassword: { required, minLength: minLength(6) },
   },
 
   methods: {
